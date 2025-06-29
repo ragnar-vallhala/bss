@@ -1,14 +1,14 @@
 // components/FAQ.js
 'use client';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { colors } from '../constants/colors';
 
 export default function FAQ() {
-  const [activeIndex, setActiveIndex] = useState(null);
+  // const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  // const toggleFAQ = (index) => {
+  //   setActiveIndex(activeIndex === index ? null : index);
+  // };
 
   return (
     <section style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>

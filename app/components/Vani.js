@@ -1,7 +1,6 @@
 // components/Vani.js
 'use client';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { colors } from '../constants/colors';
 const messages = [
   {
@@ -68,7 +67,7 @@ export default function Vani() {
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [autoPlay, messages.length]);
+  }, [autoPlay]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);

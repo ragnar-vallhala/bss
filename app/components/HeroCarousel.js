@@ -44,7 +44,7 @@ export default function HeroCarousel() {
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
+  }, [isAutoPlaying]);
 
   const goToSlide = (index) => {
     setCurrentSlide(index);

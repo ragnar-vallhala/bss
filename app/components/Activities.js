@@ -83,7 +83,7 @@ export default function Activities() {
                         <p>
                             Swamiji found a suitable place for setting up a branch for the rural development and the Jammu branch established in 2012 at village Panjgrain surrounded by many villages.
                             The Sangha fully devoted to running various Socio-Cultural-Economic activities such as Charitable Dispensary, Mobile Medical Unit, Ambulance Services,
-                            Junior School, Student's Scholarship Programmes, Clothes distribution for the needy, Yatri Niwas (Guest house) for the pilgrims of Shri Amarnath Yatra and Mata Vaishno Devi shrines and others.
+                            Junior School, Student&lsquo;s Scholarship Programmes, Clothes distribution for the needy, Yatri Niwas (Guest house) for the pilgrims of Shri Amarnath Yatra and Mata Vaishno Devi shrines and others.
                         </p>
                     </div>
                 </div>
