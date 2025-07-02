@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { colors } from "../constants/colors";
 import Layout from "../components/Layout";
 export default function ActivitiesSection() {
@@ -59,7 +58,7 @@ export default function ActivitiesSection() {
             <section>
               <h3 style={{ color: colors.primary }}>3. Education for All</h3>
               <p>
-                Education is one of BSS's core commitments. The Sangha has set
+                Education is one of BSS&apos;s core commitments. The Sangha has set
                 up schools, hostels, and coaching centers for poor and tribal
                 children, offering free lodging, meals, and quality education.
               </p>
@@ -124,9 +123,9 @@ export default function ActivitiesSection() {
               </h3>
               <p>
                 BSS organizes spiritual discourses, satsangs, yoga sessions, and
-                festivals to preserve and spread India’s cultural and spiritual
+                festivals to preserve and spread India&lsquo;s cultural and spiritual
                 traditions. They publish books and magazines on Indian
-                philosophy, scriptures, and Swami Pranavananda's teachings.
+                philosophy, scriptures, and Swami Pranavananda&apos;s teachings.
               </p>
               <ul>
                 <li>Milan Mandirs as centers of cultural harmony</li>

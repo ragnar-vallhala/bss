@@ -11,7 +11,7 @@ export default function ContactUs() {
           </h1>
 
           <p className="text-lg text-gray-700 mb-8">
-            Have a question, suggestion, or want to get involved? We'd love to hear from you!
+            Have a question, suggestion, or want to get involved? We&lsquo;d love to hear from you!
           </p>
 
           <form className="grid grid-cols-1 gap-6">

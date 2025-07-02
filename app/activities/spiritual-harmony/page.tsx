@@ -54,7 +54,7 @@ export default function SpiritualHarmony() {
 
                 <h3>Kumbh Mela</h3>
                 <p>
-                  The Kumbh Mela, derived from the Sanskrit term for "Pot of Nectar",
+                  The Kumbh Mela, derived from the Sanskrit term for &quot;Pot of Nectar&quot;,
                   is the world’s largest pilgrimage, attracting millions of devotees.
                   Held every twelve years at four sacred locations, the Sangha plays a
                   vital role in organizing services, offering spiritual teachings,

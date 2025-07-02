@@ -41,7 +41,7 @@ export default function OurHistory() {
                 <p>
                   During the Bengal famine in the 1920s, Acharya led relief
                   efforts with 500 students, going door to door to collect
-                  essentials for those in need. He also formed the "Rakshadal" —
+                  essentials for those in need. He also formed the &quot;Rakshadal&quot; —
                   local village defense forces to protect communities from
                   communal violence.
                 </p>

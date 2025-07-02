@@ -106,7 +106,7 @@ export default function ReliefWork() {
                 </p>
 
                 <p className="font-semibold italic">
-                  "In Service to Humanity" – Our large network of volunteers and
+                  &quot;In Service to Humanity&quot; – Our large network of volunteers and
                   monks helps us deliver prompt, large-scale humanitarian aid
                   across the country.
                 </p>

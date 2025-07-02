@@ -2,14 +2,14 @@
 import dynamic from "next/dynamic";
 import Layout from "@/app/components/Layout";
 
-const IndiaBranchesMap = dynamic(() => import("@/app/components/IndiaBranchesMap"), {
+const WorldBranchesMap = dynamic(() => import("@/app/components/WorldBranchesMap"), {
   ssr: false,
 });
 
 export default function WorldBranchesPage() {
   return (
     <Layout>
-      <IndiaBranchesMap />
+      <WorldBranchesMap />
     </Layout>
   );
 }

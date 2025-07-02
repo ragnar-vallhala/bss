@@ -32,7 +32,7 @@ export default function TribalWelfare() {
                 <p>
                   Multi-specialty free hospitals, mobile dispensaries, and awareness
                   campaigns reach thousands in remote areas. Mobile clinics under the
-                  Government's Grant-in-Aid Program serve 200,000 people in 64 locations.
+                  Government&apos;s Grant-in-Aid Program serve 200,000 people in 64 locations.
                 </p>
 
                 <h3>Elderly & Orphan Care</h3>
