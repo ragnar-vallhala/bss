@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { colors } from '../constants/colors';
 
 const activities = [
     {
@@ -72,7 +73,10 @@ export default function Activities() {
             {/* Top Content with Background Image - Lighter version */}
             <div className="py-12 px-4 md:px-8 lg:px-16 bg-[#f8fafc]">
                 <div className="max-w-6xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#2a5f9e] mb-6">
+                    <h2 
+                        className="text-3xl md:text-4xl font-bold mb-6"
+                        style={{ color: colors.primary }}
+                    >
                         Activities in BSS Jammu Branch
                     </h2>
                     <div className="prose-lg text-gray-600 max-w-4xl mx-auto">
@@ -110,7 +114,11 @@ export default function Activities() {
                                                     className="object-cover"
                                                 />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent flex items-end p-6">
-                                                    <Link href={activity.link} className="inline-flex items-center text-white hover:text-blue-200 transition-colors">
+                                                    <Link 
+                                                        href={activity.link} 
+                                                        style={{ color: colors.light }}
+                                                        className="inline-flex items-center hover:opacity-80 transition-colors"
+                                                    >
                                                         <span className="mr-2 font-semibold">View Details</span>
                                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -119,7 +127,10 @@ export default function Activities() {
                                                 </div>
                                             </div>
                                             <div className="p-6">
-                                                <h3 className="text-xl md:text-2xl font-bold text-[#2a5f9e] mb-3">
+                                                <h3 
+                                                    className="text-xl md:text-2xl font-bold mb-3"
+                                                    style={{ color: colors.primary }}
+                                                >
                                                     {activity.title}
                                                 </h3>
                                                 <p className="text-gray-600">{activity.description}</p>
@@ -135,7 +146,13 @@ export default function Activities() {
                             onClick={goToPrev}
                             className="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors z-10 border border-gray-200"
                         >
-                            <svg className="w-5 h-5 text-[#2a5f9e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg 
+                                className="w-5 h-5" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                                style={{ color: colors.primary }}
+                            >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
@@ -143,7 +160,13 @@ export default function Activities() {
                             onClick={goToNext}
                             className="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors z-10 border border-gray-200"
                         >
-                            <svg className="w-5 h-5 text-[#2a5f9e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg 
+                                className="w-5 h-5" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                                style={{ color: colors.primary }}
+                            >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </button>
@@ -155,7 +178,11 @@ export default function Activities() {
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-[#2a5f9e] w-6' : 'bg-gray-300'}`}
+                                style={{
+                                    backgroundColor: index === currentSlide ? colors.primary : colors.gray,
+                                    width: index === currentSlide ? '1.5rem' : '0.75rem'
+                                }}
+                                className="h-3 rounded-full transition-all"
                                 aria-label={`Go to slide ${index + 1}`}
                             />
                         ))}

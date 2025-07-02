@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { colors } from '../constants/colors';
 
 const slides = [
   {
@@ -72,9 +73,8 @@ export default function HeroCarousel() {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
             >
               <Image
                 src={slide.image}
@@ -83,7 +83,7 @@ export default function HeroCarousel() {
                 className="object-cover"
                 priority={index === 0}
               />
-              
+
               {/* Text overlay with padding to avoid header */}
               <div className="absolute inset-0 bg-black/30 flex items-center pt-[20px] pb-[80px] px-4 md:px-16">
                 <div className="container mx-auto text-center md:text-left">
@@ -93,12 +93,14 @@ export default function HeroCarousel() {
                   <p className="text-lg md:text-xl lg:text-2xl text-white mb-8 max-w-2xl mx-auto md:mx-0 animate-fadeIn delay-100">
                     {slide.subtitle}
                   </p>
-                  <Link 
+                  <Link
                     href={slide.ctaLink}
-                    className="inline-block bg-white text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition-all animate-fadeIn delay-200"
+                    style={{ backgroundColor: colors.primary }}
+                    className="inline-block text-gray-900 font-bold py-3 px-8 rounded-full hover:opacity-90 transition-all animate-fadeIn delay-200"
                   >
                     {slide.cta}
                   </Link>
+
                 </div>
               </div>
             </div>
@@ -131,9 +133,8 @@ export default function HeroCarousel() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === currentSlide ? 'bg-white w-6' : 'bg-white/50'
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-white w-6' : 'bg-white/50'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

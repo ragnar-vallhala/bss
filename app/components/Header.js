@@ -1,17 +1,60 @@
 // components/Header.js
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { colors } from '../constants/colors';
 import { navLinks } from '../constants/content';
 import Donate from './Donate';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const dropdownRef = useRef(null);
+  const dropdownCloseTimeout = useRef(null);
+
+
+  // Sample dropdown items structure
+  const dropdownItems = {
+    '/about': [
+      { name: 'Our History', href: '/about/history' },
+      { name: 'Our Mission', href: '/about/mission' },
+    ],
+    '/branches': [
+      { name: 'India Branches', href: '/branches/india' },
+      { name: 'International', href: '/branches/international' }
+    ],
+    '/activities': [
+      { name: 'Relief Work', href: '/activities/relief-work' },
+      { name: 'Healthcare Services', href: '/activities/healthcare-services' },
+      { name: 'Education Program', href: '/activities/education-program' },
+      { name: 'Tribal Welfare', href: '/activities/tribal-welfare' },
+      { name: 'Spiritual Harmony', href: '/activities/spiritual-harmony' },
+      { name: 'Development Programs', href: '/activities/development-programs' },
+    ]
+
+  };
+
+  const toggleDropdown = (linkName) => {
+    setActiveDropdown(activeDropdown === linkName ? null : linkName);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <header
-      className={`bg-[${colors.primary}] flex items-center justify-between md:px-16 px-4 relative md:min-h-[130px] min-h-[70px]`}
+      className="flex items-center justify-between md:px-16 px-4 relative md:min-h-[130px] min-h-[70px]"
       style={{ backgroundColor: colors.primary }}
     >
       {/* Logo - always visible */}
@@ -54,34 +97,108 @@ export default function Header() {
         </svg>
       </button>
 
-      {/* Desktop Donate button - right aligned */}
-      
       {/* Mobile menu overlay */}
       {isMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={() => {
+            setIsMenuOpen(false);
+            setActiveDropdown(null);
+          }}
         />
       )}
 
       {/* Navigation - slides in from right on mobile */}
-      <nav 
-        className={`fixed md:static top-0 right-0 h-full w-3/4 md:w-auto bg-[${colors.primary}] z-30 transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
-        }`}
+      <nav
+        className={`fixed md:static top-0 right-0 h-full w-3/4 md:w-auto z-30 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
+          }`}
         style={{ backgroundColor: colors.primary }}
+        ref={dropdownRef}
       >
         <div className="h-full flex flex-col md:flex-row items-center justify-center md:pl-16">
           <ul className="flex flex-col md:flex-row items-center list-none m-0 p-0 gap-6 md:gap-8">
             {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-white no-underline font-bold text-base uppercase tracking-wider whitespace-nowrap hover:opacity-80 py-2 md:py-0"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+              <li
+                key={link.name}
+                className="relative group"
+                onMouseEnter={() => {
+                  if (window.innerWidth > 768) {
+                    clearTimeout(dropdownCloseTimeout.current);
+                    setActiveDropdown(link.name);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (window.innerWidth > 768) {
+                    dropdownCloseTimeout.current = setTimeout(() => {
+                      setActiveDropdown(null);
+                    }, 200); // adjust delay as needed
+                  }
+                }}
+              >
+                {dropdownItems[link.href] ? (
+                  <div>
+                    <button
+                      className="text-white no-underline font-bold text-base uppercase tracking-wider whitespace-nowrap hover:opacity-80 py-2 md:py-0 flex items-center"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleDropdown(link.name);
+                      }}
+                    >
+                      {link.name}
+                      <svg
+                        className="w-4 h-4 ml-1 transition-transform"
+                        style={{ transform: activeDropdown === link.name ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    {(activeDropdown === link.name) && (
+                      <div
+                        className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg ${isMenuOpen ? 'static mt-0 ml-4' : ''
+                          }`}
+                        style={{ backgroundColor: colors.primary }}
+                        onClick={(e) => e.stopPropagation()}
+                        onMouseEnter={() => clearTimeout(dropdownCloseTimeout.current)}
+                        onMouseLeave={() => {
+                          dropdownCloseTimeout.current = setTimeout(() => {
+                            setActiveDropdown(null);
+                          }, 200);
+                        }}
+                      >
+                        <div className="py-1">
+                          {dropdownItems[link.href].map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className={`block px-4 py-2 text-white hover:bg-opacity-80`}
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setActiveDropdown(null);
+                              }}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="text-white no-underline font-bold text-base uppercase tracking-wider whitespace-nowrap hover:opacity-80 py-2 md:py-0"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setActiveDropdown(null);
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

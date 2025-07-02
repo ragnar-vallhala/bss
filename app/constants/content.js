@@ -1,11 +1,12 @@
 // constants/content.js
 export const navLinks = [
-  { name: 'ABOUT us', href: '/about' },
-  { name: 'OUR WORK', href: '/work' },
-  { name: 'CAMPAIGNS', href: '/campaigns' },
-  { name: 'GET INVOLVED', href: '/involved' },
-  { name: 'MEDIA CENTRE', href: '/media' },
-  { name: 'CONTACT US', href: '/contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Activities', href: '/activities' },
+  { name: 'Services', href: '/services' },
+  { name: 'Projects', href: '/projects' },
+  // { name: 'MEDIA CENTRE', href: '/media' },
+  { name: 'Contact Us', href: '/contact' },
 ];
   
   export const faqs = [

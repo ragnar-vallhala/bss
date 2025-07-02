@@ -88,74 +88,171 @@ export default function Vani() {
   };
 
   return (
-    <section className={`bg-[${colors.light}]`}>
-      {/* Top Content with Background Image */}
-      <div className={`relative py-16 px-4 md:px-8 lg:px-16`}>
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold text-[#2a5f9e] mb-4`}>
-            Shri Shri Sangha Vani
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ten divine messages of Acharya Srimat Swami Pranavanandaji Maharaj.
-          </p>
-        </div>
+    <section style={{ 
+      backgroundColor: colors.light,
+      padding: '3rem 1rem'
+    }}>
+      {/* Top Content */}
+      <div style={{
+        position: 'relative',
+        padding: '4rem 1rem',
+        maxWidth: '72rem',
+        margin: '0 auto',
+        textAlign: 'center'
+      }}>
+        <h2 style={{
+          fontSize: '1.875rem',
+          fontWeight: 'bold',
+          marginBottom: '1rem',
+          color: colors.primary
+        }}>
+          Shri Shri Sangha Vani
+        </h2>
+        <p style={{
+          fontSize: '1.125rem',
+          maxWidth: '42rem',
+          margin: '0 auto',
+          color: colors.dark
+        }}>
+          Ten divine messages of Acharya Srimat Swami Pranavanandaji Maharaj.
+        </p>
       </div>
 
       {/* Messages Carousel */}
-      <div className="py-12 px-4 md:px-8 lg:px-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative">
-            {/* Carousel */}
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {messages.map((message) => (
-                  <div key={message.id} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center h-full flex flex-col justify-center">
-                      <h3 className="text-xl md:text-2xl font-bold text-[#2a5f9e] mb-4">
-                        {message.title}
-                      </h3>
-                      <p className="text-gray-600 text-lg">
-                        {message.text}
-                      </p>
-                    </div>
+      <div style={{
+        padding: '3rem 1rem',
+        maxWidth: '72rem',
+        margin: '0 auto'
+      }}>
+        <div style={{ position: 'relative' }}>
+          {/* Carousel */}
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{
+              display: 'flex',
+              transition: 'transform 500ms ease-in-out',
+              transform: `translateX(-${currentSlide * 100}%)`
+            }}>
+              {messages.map((message) => (
+                <div key={message.id} style={{
+                  width: '100%',
+                  flexShrink: 0,
+                  padding: '0 1rem'
+                }}>
+                  <div style={{
+                    backgroundColor: colors.light,
+                    padding: '2rem',
+                    borderRadius: '0.5rem',
+                    boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)',
+                    border: `1px solid ${colors.gray}`,
+                    textAlign: 'center',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center'
+                  }}>
+                    <h3 style={{
+                      fontSize: '1.25rem',
+                      fontWeight: 'bold',
+                      marginBottom: '1rem',
+                      color: colors.primary
+                    }}>
+                      {message.title}
+                    </h3>
+                    <p style={{
+                      fontSize: '1.125rem',
+                      color: colors.dark
+                    }}>
+                      {message.text}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-
-            {/* Navigation Arrows */}
-            <button 
-              onClick={goToPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors z-10 border border-gray-200"
-            >
-              <svg className="w-5 h-5 text-[#2a5f9e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button 
-              onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors z-10 border border-gray-200"
-            >
-              <svg className="w-5 h-5 text-[#2a5f9e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
 
-          {/* Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {messages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-[#2a5f9e] w-6' : 'bg-gray-300'}`}
-                aria-label={`Go to message ${index + 1}`}
-              />
-            ))}
-          </div>
+          {/* Navigation Arrows */}
+          <button 
+            onClick={goToPrev}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              marginLeft: '-0.5rem',
+              backgroundColor: colors.light,
+              padding: '0.5rem',
+              borderRadius: '9999px',
+              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+              border: `1px solid ${colors.gray}`,
+              zIndex: 10,
+              cursor: 'pointer',
+              transition: 'background-color 200ms ease'
+            }}
+          >
+            <svg 
+              width="1.25rem" 
+              height="1.25rem" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              style={{ color: colors.primary }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button 
+            onClick={goToNext}
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              marginRight: '-0.5rem',
+              backgroundColor: colors.light,
+              padding: '0.5rem',
+              borderRadius: '9999px',
+              boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+              border: `1px solid ${colors.gray}`,
+              zIndex: 10,
+              cursor: 'pointer',
+              transition: 'background-color 200ms ease'
+            }}
+          >
+            <svg 
+              width="1.25rem" 
+              height="1.25rem" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              style={{ color: colors.primary }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Indicators */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '2rem',
+          gap: '0.5rem'
+        }}>
+          {messages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              style={{
+                width: index === currentSlide ? '1.5rem' : '0.75rem',
+                height: '0.75rem',
+                borderRadius: '9999px',
+                backgroundColor: index === currentSlide ? colors.primary : colors.gray,
+                transition: 'all 200ms ease',
+                cursor: 'pointer'
+              }}
+              aria-label={`Go to message ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

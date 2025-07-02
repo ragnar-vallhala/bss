@@ -47,11 +47,27 @@ export default function Layout({ children }) {
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-8 right-8 bg-[#2a5f9e] text-white p-3 rounded-full shadow-lg hover:bg-[#1e4a7e] transition-colors duration-300 z-50"
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            right: '2rem',
+            backgroundColor: colors.primary,
+            color: colors.light,
+            padding: '0.75rem',
+            borderRadius: '9999px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'background-color 300ms ease',
+            zIndex: 50
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            style={{
+              height: '1.5rem',
+              width: '1.5rem'
+            }}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
