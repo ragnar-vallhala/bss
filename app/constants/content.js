@@ -3,8 +3,8 @@ export const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
   { name: 'Activities', href: '/activities' },
-  { name: 'Services', href: '/services' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'Branches', href: '/branches' },
+  // { name: 'Projects', href: '/projects' },
   // { name: 'MEDIA CENTRE', href: '/media' },
   { name: 'Contact Us', href: '/contact' },
 ];
