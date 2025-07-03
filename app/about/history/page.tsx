@@ -21,8 +21,8 @@ export default function HistorySection() {
 
               <div className="prose max-w-none text-gray-600 mb-8">
                 <p>
-                  The **Bharat Sevashram Sangha (BSS)** was founded in **1917**
-                  by **Acharya Srimat Swami Pranavananda Maharaj**, a visionary
+                  The Bharat Sevashram Sangha (BSS) was founded in 1917
+                  by Acharya Srimat Swami Pranavananda Maharaj, a visionary
                   spiritual leader and patriot. In a time when India was under
                   colonial rule, Acharya Maharaj established the Sangha with the
                   twin objectives of spiritual awakening and social service.
@@ -39,8 +39,8 @@ export default function HistorySection() {
 
                 <p>
                   Acharya Maharaj’s early years were marked by deep spiritual
-                  practice. He received intense yogic training under **Baba
-                  Gambhirnathji** of the Natha sect. By the time he took
+                  practice. He received intense yogic training under Baba
+                  Gambhirnathji of the Natha sect. By the time he took
                   monastic vows at the age of 28, he had already envisioned the
                   Sangha as a catalyst for India’s cultural resurgence and moral
                   regeneration.
@@ -51,23 +51,23 @@ export default function HistorySection() {
                   leadership, provided massive relief. Acharya Maharaj organized
                   volunteers and students to collect food and distribute aid in
                   affected regions. This event marked the beginning of the
-                  Sangha’s long-standing tradition of **disaster relief and
-                  community support**.
+                  Sangha’s long-standing tradition of disaster relief and
+                  community support.
                 </p>
 
                 <p>
                   Over the decades, BSS has expanded its footprint across India
-                  and globally. It has actively participated in **freedom
-                  movements**, **tribal welfare**, **education**,
-                  **healthcare**, and **rehabilitation**. Despite its monastic
+                  and globally. It has actively participated in freedom
+                  movements, tribal welfare, education,
+                  healthcare, and rehabilitation. Despite its monastic
                   roots, the Sangha has always maintained a practical approach
                   to nation-building through action and sacrifice.
                 </p>
 
                 <p>
                   Today, the Bharat Sevashram Sangha continues to uphold the
-                  values set forth by its founder—**selfless service, spiritual
-                  discipline, and social commitment**. It has more than 500
+                  values set forth by its founder—selfless service, spiritual
+                  discipline, and social commitment. It has more than 500
                   branches worldwide and is recognized as a key player in
                   humanitarian relief, education, and cultural preservation.
                 </p>
