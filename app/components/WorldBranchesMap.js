@@ -3,7 +3,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { useEffect } from "react";
-import Layout from "@/app/components/Layout";
 
 // List of sample BSS branches worldwide with lat/lng and info
 const branches = [
@@ -69,42 +68,34 @@ export default function WorldBranchesMap() {
   useLeafletIconFix();
 
   return (
-    <Layout>
-      <main className="min-h-screen flex flex-col items-center justify-start bg-gray-100 p-6">
-        <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">
-          Bharat Sevashram Sangha Branches Worldwide
-        </h1>
-        <p className="max-w-3xl text-center mb-6 text-gray-600">
-          Explore our global presence. Click on markers to see branch details.
-        </p>
 
-        <div className="w-full max-w-6xl h-[600px] rounded-lg shadow-lg overflow-hidden">
-          <MapContainer
-            center={[20, 0]}
-            zoom={2}
-            scrollWheelZoom={true}
-            className="w-full h-full"
-            minZoom={2}
-            maxZoom={7}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
 
-            {branches.map(({ name, country, lat, lng }, idx) => (
-              <Marker key={idx} position={[lat, lng]}>
-                <Popup>
-                  <div>
-                    <strong>{name}</strong> <br />
-                    {country}
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
-        </div>
-      </main>
-    </Layout>
+    <div className="w-full h-[600px] rounded-lg overflow-hidden shadow-lg">
+      <MapContainer
+        center={[20, 0]}
+        zoom={2}
+        scrollWheelZoom={false}
+        className="w-full h-full z-0"
+        minZoom={2}
+        maxZoom={7}
+      >
+        <TileLayer
+          attribution='&copy; OpenStreetMap contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        {branches.map(({ name, country, lat, lng }, idx) => (
+          <Marker key={idx} position={[lat, lng]}>
+            <Popup>
+              <div>
+                <strong>{name}</strong> <br />
+                {country}
+              </div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
+
   );
 }

@@ -89,7 +89,7 @@ export default function IndiaBranchesMap() {
       <MapContainer
         center={[22.5, 80]}
         zoom={5}
-        scrollWheelZoom={true}
+        scrollWheelZoom={false}
         className="w-full h-full z-0"
       >
         <TileLayer

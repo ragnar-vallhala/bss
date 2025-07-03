@@ -55,7 +55,7 @@ export default function Footer() {
               Sofia & Plovdiv (Bulgaria), Trinidad & Tobago, Fiji, Nepal
             </p>
             <Link
-              href="https://basemashram.org"
+              href="/branches/india"
               style={{
                 display: 'inline-block',
                 marginTop: '1rem',
@@ -63,7 +63,7 @@ export default function Footer() {
                 textDecoration: 'none'
               }}
             >
-              Find all branches &gt; basemashram.org
+              Find all branches &gt; branches/india
             </Link>
           </div>
 
@@ -81,9 +81,7 @@ export default function Footer() {
               gap: '0.5rem'
             }}>
               {[
-                "Amarnath Yatra",
-                "Mata Vaishno Devi Yatra",
-                "Swami Pranavananda Vidyaniketan",
+                "Swami Pranavananda Vidyarthi Bhavan",
                 "Charitable Dispensary",
                 "Guest House",
                 "Relief Work",
@@ -117,24 +115,24 @@ export default function Footer() {
               }}>
                 Bharat Sevashram Sangha
               </p>
-              <p style={{ marginBottom: '0.25rem' }}>NH-44, Bye Pass Road, Paloura,</p>
-              <p style={{ marginBottom: '0.25rem' }}>Jammu-181221</p>
-              <p style={{ marginBottom: '0.25rem' }}>Near ITI and Polytechnic</p>
+              <p style={{ marginBottom: '0.25rem' }}>58 Pranavananda Road, Garia,</p>
+              <p style={{ marginBottom: '0.25rem' }}>South 24 Paragana,</p>
+              <p style={{ marginBottom: '0.25rem' }}>Kolkata-700084</p>
               <p style={{
                 marginTop: '1rem',
                 marginBottom: '0.25rem'
               }}>
-                +91-8385086767
+                +91-9434012856
               </p>
-              <p style={{ marginBottom: '1rem' }}>+91-9149705497</p>
+              <p style={{ marginBottom: '1rem' }}>+91-9596943769</p>
               <a
-                href="mailto:bharatsevashramjammu@gmail.com"
+                href="mailto:contact@bssgaria.org"
                 style={{
                   color: colors.light,
                   textDecoration: 'none'
                 }}
               >
-                bharatsevashramjammu@gmail.com
+                contact@bssgaria.org
               </a>
             </address>
           </div>
@@ -147,7 +145,19 @@ export default function Footer() {
           paddingTop: '1.5rem',
           textAlign: 'center'
         }}>
-          <p>Bharat Sevashram Sangha, Jammu © {new Date().getFullYear()} All Rights Reserved</p>
+          <p>Bharat Sevashram Sangha, Garia © {new Date().getFullYear()} All Rights Reserved</p>
+          <Link
+              href="/developer"
+              style={{
+                display: 'inline-block',
+                marginTop: '0.5rem',
+                color: colors.light,
+                textDecoration: 'none',
+                fontSize:'0.8em',
+              }}
+            >
+              Developers&apos; Details
+            </Link>
         </div>
       </div>
     </footer>

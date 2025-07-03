@@ -12,7 +12,7 @@ const slides = [
     title: 'Join Our Mission',
     subtitle: 'Help us make a difference in communities worldwide',
     cta: 'Learn More',
-    ctaLink: '/about'
+    ctaLink: '/about/history'
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const slides = [
     title: 'Volunteer With Us',
     subtitle: 'Become part of our dedicated team',
     cta: 'Get Involved',
-    ctaLink: '/volunteer'
+    ctaLink: '/contact'
   }
 ];
 
@@ -96,7 +96,7 @@ export default function HeroCarousel() {
                   <Link
                     href={slide.ctaLink}
                     style={{ backgroundColor: colors.primary }}
-                    className="inline-block text-gray-900 font-bold py-3 px-8 rounded-full hover:opacity-90 transition-all animate-fadeIn delay-200"
+                    className="inline-block text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-all animate-fadeIn delay-200"
                   >
                     {slide.cta}
                   </Link>

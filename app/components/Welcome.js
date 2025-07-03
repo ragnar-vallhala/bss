@@ -13,7 +13,7 @@ export default function Welcome() {
                         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
                             Welcome to
                         </h1>
-                        <h2 
+                        <h2
                             className="text-4xl md:text-5xl font-bold mb-6"
                             style={{ color: colors.primary }}
                         >
@@ -27,8 +27,8 @@ export default function Welcome() {
 
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
-                                href="/about"
-                                style={{ 
+                                href="/about/history"
+                                style={{
                                     backgroundColor: colors.primary,
                                     color: 'white'
                                 }}
