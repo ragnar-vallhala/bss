@@ -174,10 +174,11 @@ export default function MediaPage() {
                 sizes="(max-width: 768px) 90vw, 90vw"
                 className="object-contain"
                 priority
+                onClick={closeImage}
               />
               <button
                 onClick={closeImage}
-                className="absolute top-4 right-4 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-colors"
+                className="absolute top-2 right-8 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
