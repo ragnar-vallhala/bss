@@ -177,7 +177,7 @@ export default function DonationPage() {
                   </p>
                   <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4">
                     <Image
-                      src="/images/upi-qr.png"
+                      src="/upi/QRPay.jpeg"
                       alt="UPI QR Code"
                       width={180}
                       height={180}
@@ -189,7 +189,7 @@ export default function DonationPage() {
                       UPI ID
                     </p>
                     <p className="text-lg font-mono font-medium bg-gray-100 px-3 py-2 rounded">
-                      bssgaria@upi
+                      bharatsevashram123456@sbi
                     </p>
                   </div>
                 </div>

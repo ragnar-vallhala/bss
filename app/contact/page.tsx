@@ -1,7 +1,50 @@
+'use client';
+
 import Layout from "@/app/components/Layout";
 import { colors } from "../constants/colors";
+import { useState } from "react";
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzsazBdmUCSivCjm1365zNVktoblYaW_m1ASZd72_gTA2t01URYnr5P0VSqzBMtpLlX/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        alert("✅ Thank you for your message!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert("⚠️ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("❌ Could not submit the form. Please check your network.");
+    }
+  };
+
   return (
     <Layout>
       <section className="py-12 px-4 md:px-8 lg:px-16 bg-white">
@@ -14,7 +57,7 @@ export default function ContactUs() {
             Have a question, suggestion, or want to get involved? We&lsquo;d love to hear from you!
           </p>
 
-          <form className="grid grid-cols-1 gap-6">
+          <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
@@ -24,6 +67,8 @@ export default function ContactUs() {
                 id="name"
                 name="name"
                 required
+                value={formData.name}
+                onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring focus:ring-opacity-50"
               />
             </div>
@@ -37,6 +82,8 @@ export default function ContactUs() {
                 id="email"
                 name="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring focus:ring-opacity-50"
               />
             </div>
@@ -50,6 +97,8 @@ export default function ContactUs() {
                 name="message"
                 rows={6}
                 required
+                value={formData.message}
+                onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring focus:ring-opacity-50"
               ></textarea>
             </div>
