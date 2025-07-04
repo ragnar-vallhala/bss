@@ -13,11 +13,38 @@ export default function DonationPage() {
     transactionId: "",
     message: "",
   });
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your donation! We'll contact you soon.");
-    setDonationComplete(false);
+
+    try {
+
+      console.log("Donate form",formData)
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzoJ7s20jNrkB-lUfaIu0y_-Qpu1SaPItfF8SOWKYyj94VGsXqmoYTfPcpfZeLpS2m1bA/exec", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8"},
+        body: JSON.stringify(formData),
+        redirect: "follow",
+      });
+
+      // const result = await response.json();
+      console.log("Donate result",response);
+      if (response.status === 200) {
+        alert("✅ Thank you for your donation!");
+        setFormData({
+          name: "",
+          email: "",
+          amount: "",
+          transactionId: "",
+          message: "",
+        });
+        setDonationComplete(false);
+      } else {
+        alert("⚠️ Submission failed. Try again later.");
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      alert("❌ Could not submit. Please check your network.");
+    }
   };
 
   const handleInputChange = (
@@ -229,7 +256,6 @@ export default function DonationPage() {
                       backgroundColor: colors.light,
                       color: colors.dark,
                       borderColor: colors.secondary,
-                     
                     }}
                   />
                 </div>
@@ -254,7 +280,6 @@ export default function DonationPage() {
                       backgroundColor: colors.light,
                       color: colors.dark,
                       borderColor: colors.secondary,
-                     
                     }}
                   />
                 </div>
@@ -280,7 +305,6 @@ export default function DonationPage() {
                       backgroundColor: colors.light,
                       color: colors.dark,
                       borderColor: colors.secondary,
-                     
                     }}
                   />
                 </div>
@@ -306,7 +330,6 @@ export default function DonationPage() {
                       backgroundColor: colors.light,
                       color: colors.dark,
                       borderColor: colors.secondary,
-                     
                     }}
                   />
                 </div>
@@ -330,7 +353,6 @@ export default function DonationPage() {
                       backgroundColor: colors.light,
                       color: colors.dark,
                       borderColor: colors.secondary,
-                     
                     }}
                   ></textarea>
                 </div>

@@ -10,38 +10,38 @@ export default function ContactUs() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false); // Add loading state
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => { // Changed type to FormEvent
     e.preventDefault();
-
+    setIsSubmitting(true); // Set loading to true when submitting
+  
     try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzsazBdmUCSivCjm1365zNVktoblYaW_m1ASZd72_gTA2t01URYnr5P0VSqzBMtpLlX/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
+      const response  = await fetch("https://script.google.com/macros/s/AKfycbzsazBdmUCSivCjm1365zNVktoblYaW_m1ASZd72_gTA2t01URYnr5P0VSqzBMtpLlX/exec", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
+        body: JSON.stringify(formData),
+        redirect: "follow",
+      });
       const result = await response.json();
-
-      if (result.status === "success") {
+      console.log("Contact result",result);
+      if(result.status=="success"){
         alert("✅ Thank you for your message!");
         setFormData({ name: "", email: "", message: "" });
-      } else {
-        alert("⚠️ Something went wrong. Please try again.");
       }
-    } catch (error) {
-      console.error("Error:", error);
+      else{
+        alert("⚠️ Submission failed. Try again later.");
+      }
+    } catch (err) {
+      console.error(err);
       alert("❌ Could not submit the form. Please check your network.");
+    } finally {
+      setIsSubmitting(false); // Set loading to false when done
     }
   };
 
@@ -105,10 +105,23 @@ export default function ContactUs() {
 
             <button
               type="submit"
-              className="bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90"
+              disabled={isSubmitting} // Disable button when submitting
+              className={`bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 flex items-center justify-center ${
+                isSubmitting ? "opacity-75 cursor-not-allowed" : ""
+              }`}
               style={{ backgroundColor: colors.primary }}
             >
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
             </button>
           </form>
         </div>
