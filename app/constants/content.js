@@ -4,7 +4,7 @@ export const navLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'Activities', href: '/activities' },
   { name: 'Branches', href: '/branches' },
-  // { name: 'Projects', href: '/projects' },
+  { name: 'Media', href: '/media' },
   // { name: 'MEDIA CENTRE', href: '/media' },
   { name: 'Contact Us', href: '/contact' },
 ];
