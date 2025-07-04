@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function DonationPage() {
   const [donationComplete, setDonationComplete] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,21 +14,24 @@ export default function DonationPage() {
     transactionId: "",
     message: "",
   });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
+      console.log("Donate form", formData);
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzoJ7s20jNrkB-lUfaIu0y_-Qpu1SaPItfF8SOWKYyj94VGsXqmoYTfPcpfZeLpS2m1bA/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify(formData),
+          redirect: "follow",
+        }
+      );
 
-      console.log("Donate form",formData)
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzoJ7s20jNrkB-lUfaIu0y_-Qpu1SaPItfF8SOWKYyj94VGsXqmoYTfPcpfZeLpS2m1bA/exec", {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=UTF-8"},
-        body: JSON.stringify(formData),
-        redirect: "follow",
-      });
-
-      // const result = await response.json();
-      console.log("Donate result",response);
+      console.log("Donate result", response);
       if (response.status === 200) {
         alert("✅ Thank you for your donation!");
         setFormData({
@@ -44,6 +48,8 @@ export default function DonationPage() {
     } catch (error) {
       console.error("Submit error:", error);
       alert("❌ Could not submit. Please check your network.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -367,30 +373,62 @@ export default function DonationPage() {
                       color: colors.dark,
                       backgroundColor: colors.light,
                     }}
+                    disabled={isSubmitting}
                   >
                     Back
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 rounded-lg transition-colors"
+                    className="px-6 py-2 rounded-lg transition-colors flex items-center justify-center"
                     style={{
                       backgroundColor: colors.primary,
                       color: colors.light,
+                      minWidth: "120px",
+                      opacity: isSubmitting ? 0.7 : 1,
                     }}
+                    disabled={isSubmitting}
                   >
-                    Submit Details
+                    {isSubmitting ? (
+                      <>
+                        <svg
+                          className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Processing...
+                      </>
+                    ) : (
+                      "Submit Details"
+                    )}
                   </button>
                 </div>
               </form>
             </div>
           )}
-          <button
-            onClick={() => setDonationComplete(true)}
-            className="mt-6 w-full font-bold py-3 px-4 rounded-lg transition-colors"
-            style={{ backgroundColor: colors.primary, color: colors.light }}
-          >
-            I&apos;ve Donated
-          </button>
+          {!donationComplete && (
+            <button
+              onClick={() => setDonationComplete(true)}
+              className="mt-6 w-full font-bold py-3 px-4 rounded-lg transition-colors"
+              style={{ backgroundColor: colors.primary, color: colors.light }}
+            >
+              I&apos;ve Donated
+            </button>
+          )}
           {/* Tax Benefit Section */}
           <div
             className="mt-12 rounded-xl p-6"
