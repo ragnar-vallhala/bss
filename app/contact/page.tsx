@@ -3,6 +3,8 @@
 import Layout from "@/app/components/Layout";
 import { colors } from "../constants/colors";
 import { useState } from "react";
+import toast from 'react-hot-toast';
+
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -20,7 +22,6 @@ export default function ContactUs() {
   const handleSubmit = async (e: React.FormEvent) => { // Changed type to FormEvent
     e.preventDefault();
     setIsSubmitting(true); // Set loading to true when submitting
-  
     try {
       const response  = await fetch("https://script.google.com/macros/s/AKfycbzsazBdmUCSivCjm1365zNVktoblYaW_m1ASZd72_gTA2t01URYnr5P0VSqzBMtpLlX/exec", {
         method: "POST",
@@ -31,15 +32,15 @@ export default function ContactUs() {
       const result = await response.json();
       console.log("Contact result",result);
       if(result.status=="success"){
-        alert("✅ Thank you for your message!");
+        toast.success("✅ Thank you for your message!");
         setFormData({ name: "", email: "", message: "" });
       }
       else{
-        alert("⚠️ Submission failed. Try again later.");
+        toast.error("⚠️ Submission failed. Try again later.");
       }
     } catch (err) {
       console.error(err);
-      alert("❌ Could not submit the form. Please check your network.");
+      toast.error("❌ Could not submit the form. Please check your network.");
     } finally {
       setIsSubmitting(false); // Set loading to false when done
     }

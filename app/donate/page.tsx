@@ -3,6 +3,8 @@ import Layout from "../components/Layout";
 import { colors } from "../constants/colors";
 import Image from "next/image";
 import { useState } from "react";
+import toast from 'react-hot-toast';
+
 
 export default function DonationPage() {
   const [donationComplete, setDonationComplete] = useState(false);
@@ -33,7 +35,7 @@ export default function DonationPage() {
 
       console.log("Donate result", response);
       if (response.status === 200) {
-        alert("✅ Thank you for your donation!");
+        toast.success("✅ Thank you for your donation!");
         setFormData({
           name: "",
           email: "",
@@ -43,11 +45,11 @@ export default function DonationPage() {
         });
         setDonationComplete(false);
       } else {
-        alert("⚠️ Submission failed. Try again later.");
+        toast.error("⚠️ Submission failed. Try again later.");
       }
     } catch (error) {
       console.error("Submit error:", error);
-      alert("❌ Could not submit. Please check your network.");
+      toast.error("❌ Could not submit. Please check your network.");
     } finally {
       setIsSubmitting(false);
     }
