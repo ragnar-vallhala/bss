@@ -108,17 +108,22 @@ export default function MediaPage() {
               </button>
 
               <div className="flex items-center gap-1">
-                {Array.from({ length: Math.min(5, totalPages) }).map((_, i) => {
+                {Array.from({ length: 2 }).map((_, i) => {
                   let pageNum;
-                  if (totalPages <= 5) {
+
+                  if (totalPages <= 2) {
                     pageNum = i + 1;
-                  } else if (currentPage <= 3) {
+                  } else if (currentPage === 1) {
                     pageNum = i + 1;
-                  } else if (currentPage >= totalPages - 2) {
-                    pageNum = totalPages - 4 + i;
+                  } else if (currentPage === totalPages) {
+                    pageNum = totalPages - 1 + i;
                   } else {
-                    pageNum = currentPage - 2 + i;
+                    pageNum = currentPage - 1 + i;
                   }
+
+                  // Prevent showing invalid page numbers
+                  if (pageNum < 1 || pageNum > totalPages) return null;
+
                   return (
                     <button
                       key={i}
