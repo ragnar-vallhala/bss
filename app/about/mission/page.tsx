@@ -77,7 +77,7 @@ export default function OurHistory() {
             <div className="md:w-1/2 order-1 md:order-2 w-full">
               <div className="relative h-64 w-full md:h-96 rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/images/history/history.png"
+                  src="/images/welcome/welcome.png"
                   alt="Historical roots of Bharat Sevashram Sangha"
                   fill
                   className="object-contain md:object-contain"
