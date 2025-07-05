@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: `"Bharat Sevashram Sangha Garia" <contact@bssgaria.org>`,
       to: to,
+      cc:"contact@bssgaria.org,raghunathc1982@gmail.com",
       subject: subject,
       text: message,
     });
