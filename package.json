@@ -11,6 +11,8 @@
   "dependencies": {
     "leaflet": "^1.9.4",
     "next": "15.3.4",
+    "node-mailer": "^0.1.1",
+    "nodemailer": "^7.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",

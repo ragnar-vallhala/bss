@@ -2,7 +2,7 @@
 import Layout from "@/app/components/Layout";
 import { colors } from "../../../constants/colors";
 import { useState } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 export default function StudentRegistration() {
   const [formData, setFormData] = useState({
@@ -45,7 +45,9 @@ export default function StudentRegistration() {
   ];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -67,6 +69,34 @@ export default function StudentRegistration() {
 
       if (response.status == 200) {
         toast.success("✅ Registration Successful!");
+        const mail = {
+          to: formData.email,
+          subject: "Thank You for Registering for the Education Program",
+          message: `Dear ${formData.name},
+  
+  Thank you for registering for our Education Program. We have received your details and will contact you shortly with further information.
+  
+  Here is a summary of your registration:
+  - Name: ${formData.name}
+  - Date of Birth: ${formData.dob}
+  - Gender: ${formData.gender}
+  - Phone: ${formData.phone}
+  - Email: ${formData.email}
+  - Course Selected: ${formData.course}
+  
+  If you have any questions, please feel free to reach out.
+  
+  Best regards,
+  Bharat Sevashram Sangha Garia
+          `,
+        };
+
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(mail),
+        });
+
         setFormData({
           name: "",
           dob: "",
@@ -126,7 +156,10 @@ export default function StudentRegistration() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Full Name */}
           <div>
-            <label htmlFor="name" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="name"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Full Name <span className="text-red-600">*</span>
             </label>
             <input
@@ -143,7 +176,10 @@ export default function StudentRegistration() {
 
           {/* Date of Birth */}
           <div>
-            <label htmlFor="dob" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="dob"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Date of Birth <span className="text-red-600">*</span>
             </label>
             <input
@@ -159,7 +195,10 @@ export default function StudentRegistration() {
 
           {/* Gender */}
           <div>
-            <label htmlFor="gender" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="gender"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Gender <span className="text-red-600">*</span>
             </label>
             <select
@@ -181,7 +220,10 @@ export default function StudentRegistration() {
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="email"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Email Address <span className="text-red-600">*</span>
             </label>
             <input
@@ -198,7 +240,10 @@ export default function StudentRegistration() {
 
           {/* Phone */}
           <div>
-            <label htmlFor="phone" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="phone"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Phone Number <span className="text-red-600">*</span>
             </label>
             <input
@@ -215,7 +260,10 @@ export default function StudentRegistration() {
 
           {/* Permanent Address */}
           <div>
-            <label htmlFor="address" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="address"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Permanent Address <span className="text-red-600">*</span>
             </label>
             <textarea
@@ -232,7 +280,10 @@ export default function StudentRegistration() {
 
           {/* Parent/Guardian Name */}
           <div>
-            <label htmlFor="parentName" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="parentName"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Parent/Guardian Name <span className="text-red-600">*</span>
             </label>
             <input
@@ -249,8 +300,12 @@ export default function StudentRegistration() {
 
           {/* Parent/Guardian Phone */}
           <div>
-            <label htmlFor="parentPhone" className="block mb-2 font-semibold text-gray-700">
-              Parent/Guardian Contact Number <span className="text-red-600">*</span>
+            <label
+              htmlFor="parentPhone"
+              className="block mb-2 font-semibold text-gray-700"
+            >
+              Parent/Guardian Contact Number{" "}
+              <span className="text-red-600">*</span>
             </label>
             <input
               id="parentPhone"
@@ -266,7 +321,10 @@ export default function StudentRegistration() {
 
           {/* Educational Qualification */}
           <div>
-            <label htmlFor="qualification" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="qualification"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Educational Qualification <span className="text-red-600">*</span>
             </label>
             <select
@@ -288,7 +346,10 @@ export default function StudentRegistration() {
 
           {/* Course Interested In */}
           <div>
-            <label htmlFor="course" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="course"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Select Course <span className="text-red-600">*</span>
             </label>
             <select
@@ -312,7 +373,10 @@ export default function StudentRegistration() {
 
           {/* Previous Experience */}
           <div>
-            <label htmlFor="experience" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="experience"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Previous Experience (if any)
             </label>
             <textarea
@@ -328,7 +392,10 @@ export default function StudentRegistration() {
 
           {/* Emergency Contact Name */}
           <div>
-            <label htmlFor="emergencyName" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="emergencyName"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Emergency Contact Name <span className="text-red-600">*</span>
             </label>
             <input
@@ -345,7 +412,10 @@ export default function StudentRegistration() {
 
           {/* Emergency Contact Phone */}
           <div>
-            <label htmlFor="emergencyPhone" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="emergencyPhone"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Emergency Contact Phone <span className="text-red-600">*</span>
             </label>
             <input
@@ -362,7 +432,10 @@ export default function StudentRegistration() {
 
           {/* Additional Comments */}
           <div>
-            <label htmlFor="comments" className="block mb-2 font-semibold text-gray-700">
+            <label
+              htmlFor="comments"
+              className="block mb-2 font-semibold text-gray-700"
+            >
               Additional Comments
             </label>
             <textarea
@@ -379,7 +452,9 @@ export default function StudentRegistration() {
           <button
             type="submit"
             style={{ backgroundColor: colors.primary }}
-            className={`text-white font-bold py-3 px-6 rounded w-full hover:bg-opacity-90 transition-colors flex items-center justify-center ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
+            className={`text-white font-bold py-3 px-6 rounded w-full hover:bg-opacity-90 transition-colors flex items-center justify-center ${
+              isSubmitting ? "opacity-75 cursor-not-allowed" : ""
+            }`}
             disabled={isSubmitting}
           >
             {isSubmitting ? (

@@ -3,8 +3,7 @@ import Layout from "../components/Layout";
 import { colors } from "../constants/colors";
 import Image from "next/image";
 import { useState } from "react";
-import toast from 'react-hot-toast';
-
+import toast from "react-hot-toast";
 
 export default function DonationPage() {
   const [donationComplete, setDonationComplete] = useState(false);
@@ -36,6 +35,31 @@ export default function DonationPage() {
       console.log("Donate result", response);
       if (response.status === 200) {
         toast.success("✅ Thank you for your donation!");
+
+        // Send thank you email
+        const mail = {
+          to: formData.email,
+          subject:
+            "Thank You for Your Generous Donation to Bharat Sevashram Sangha",
+          message: `Dear ${formData.name},
+
+Thank you for your generous donation of ₹${formData.amount} to Bharat Sevashram Sangha. We truly appreciate your support towards our spiritual and charitable initiatives.
+
+Your transaction ID: ${formData.transactionId}
+
+If you have any questions or need assistance, please feel free to reach out to us.
+
+With gratitude,
+Bharat Sevashram Sangha Garia`,
+        };
+
+        const mailResponse = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(mail),
+        });
+        console.log("Mail send response:", mailResponse);
+
         setFormData({
           name: "",
           email: "",
