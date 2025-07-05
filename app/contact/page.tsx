@@ -81,7 +81,7 @@ export default function ContactUs() {
             love to hear from you!
           </p>
 
-          <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
+          <form className="grid grid-cols-1 gap-6 text-black" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="name"
