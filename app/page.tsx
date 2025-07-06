@@ -3,7 +3,8 @@ import Layout from './components/Layout';
 import Hero from './components/Hero';
 import Welcome from './components/Welcome';
 // import Projects from './components/Projects';
-// import Activities from './components/Activities';
+import EducationProgramCard from './components/EducationProgramCard';
+
 import Vani from './components/Vani';
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
     <Layout>
       <Hero />
       <Welcome/>
-      {/* <Projects/> */}
+      <EducationProgramCard/>
       {/* <Activities/> */}
       <Vani/>
     </Layout>

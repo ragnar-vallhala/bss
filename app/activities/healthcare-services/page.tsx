@@ -139,7 +139,7 @@ export default function HealthcareServices() {
             <div className="md:w-1/2 order-1 md:order-2 w-full">
               <div className="relative h-64 w-full md:h-[36rem] rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/images/healthcare/banner.jpg"
+                  src="/images/activities/health.png"
                   alt="Healthcare Services by Bharat Sevashram Sangha"
                   fill
                   className="object-cover"
