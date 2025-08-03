@@ -17,6 +17,7 @@ export default function Header() {
     '/about': [
       { name: 'Our History', href: '/about/history' },
       { name: 'Our Mission', href: '/about/mission' },
+      { name: 'NITI Ayog Registration', href: '/about/niti' },
     ],
     '/branches': [
       { name: 'India Branches', href: '/branches/india' },
